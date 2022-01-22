@@ -129,8 +129,118 @@ export const StyledModa2 = styled.div`
                 transform: translateY(3px);
             }
             }
-    
 `
+
+export const StyledModa3 = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin:0px 20px 20px 20px;
+    .buttonLayout {
+            display:flex;
+            justify-content:space-around;
+        }
+    form {
+        
+        div {
+            width:100%;
+            display:flex;
+            flex-direction:column;
+        }
+        position:relative;
+        margin-top:0px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        height:100%;
+            input[type=date] {
+                margin-top:7px;
+                background-color:#ffa31a;
+                width:150px;
+                outline:none;
+                padding: 7px 10px;
+                font-size:12px;
+                border:none;
+                border-radius:10px;
+                ::-webkit-calendar-picker-indicator {
+                    background-color:white;
+                    border-radius:5px;
+                    cursor:pointer;
+                }
+            }
+            
+            
+            span{
+                margin-top:15px;
+                width:80%;
+                display:flex;
+                justify-content:center;
+                flex-wrap:wrap;
+                    input[type=radio] { 
+                    position: absolute;
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                    /* &:checked + img {
+                        -webkit-filter: grayscale(0%);
+                        -moz-filter:    grayscale(0%);
+                        -ms-filter:     grayscale(0%);
+                        -o-filter:      grayscale(0%);
+                    } */
+                    }
+
+                    input[type=radio]:checked + img {
+                        -webkit-filter: grayscale(0%);
+                        -moz-filter:    grayscale(0%);
+                        -ms-filter:     grayscale(0%);
+                        -o-filter:      grayscale(0%);
+                    }
+                
+                    label {
+                        position:relative;
+
+                        
+                        }
+                        img {
+                            user-drag: none;
+                            -webkit-user-drag: none;
+                            -moz-user-select: none;
+                            -webkit-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                            selectable:none
+                            filter:none;
+                            width: 100px;
+                            height:100px;
+                            -webkit-filter: grayscale(100%);
+                            -moz-filter:    grayscale(100%);
+                            -ms-filter:     grayscale(100%);
+                            -o-filter:      grayscale(100%);
+                            cursor: pointer;
+
+                            
+                        }
+                
+                }
+            }        
+            button {
+            /* transform: translateY(150px); */
+            width:120px;
+            margin-top:30px;
+            color:black;
+            padding: 3px;
+            background-color:#ffa31a;
+            border:0;
+            border-radius:2px;
+            cursor: pointer;
+            &:hover {
+                background-color:#ffc56d;
+            }
+            &:active {
+                transform: translateY(3px);
+            }
+            }
+`
+
 export const Button = styled.div`
     display:flex;
     justify-content:space-between;
@@ -154,6 +264,11 @@ export const Button = styled.div`
         transform:translateY(2px);
     }}
 `
+
+
+
+
+
 export const InputWrapper = styled.div`
     position: relative;
     background-color: 0; 
@@ -208,5 +323,3 @@ export const InputWrapper = styled.div`
         background-color:black;
     }
 `
-
-

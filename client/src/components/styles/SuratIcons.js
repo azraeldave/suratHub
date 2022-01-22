@@ -12,7 +12,14 @@ export const SuratIcons = styled.div`
     height : 25px;
     margin: 5px 20px;
     cursor: pointer;
+    &:hover {
+      color : #e7e7e7
     }
+    &:active {
+      transform:translateY(3px)
+    }
+  
+  }
     /* icon styles go here */
   }
 `

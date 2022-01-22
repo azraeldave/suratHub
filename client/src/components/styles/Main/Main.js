@@ -36,6 +36,7 @@ export const Main1_container = styled.div`
     height:auto;
 `
 export const Main1_Menu = styled.div`
+position:relative;
     margin-top: 26px;
     width:auto;
     height:auto;

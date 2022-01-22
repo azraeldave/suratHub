@@ -8,7 +8,7 @@ export default function Navbar({ loginStatus, loginClick, cancelLogin, activateL
     return (
         <NavContainer1>
             <NavContainer2>
-                <DarkLogo style={{ cursor: 'pointer' }} width='200px' height='50px' />
+                <DarkLogo width='200px' height='50px' />
                 {loginStatus == false ?
                     <LoginContainer onClick={loginClick}>
                         <Login width='35px' height='35px' className='icon' />

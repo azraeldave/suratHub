@@ -1,14 +1,21 @@
 import React from 'react'
 import { StyledSurat, InnerContainer } from '../styles/Main/StyledSurat'
-import { MailCheckmark, MailArrowUp, MailError, MailClock, } from 'styled-icons/fluentui-system-regular'
+import { MailCheckmark } from 'styled-icons/fluentui-system-regular'
 import { MapMarkerAlt } from 'styled-icons/fa-solid'
 import { SuratIcons, SuratIcons_container } from '../styles/SuratIcons'
 import { MailSettings } from '@styled-icons/fluentui-system-filled'
-export default function Surat({ data, lastTracked }) {
+
+
+
+
+
+export default function Surat({ data, lastTracked, showEditModal }) {
+
+
     return (
         <>
             {data.map(
-                (surat) => (
+                (surat, index) => (
                     <StyledSurat>
                         <InnerContainer>
                             <h1>{surat.nomor}</h1>
@@ -18,12 +25,15 @@ export default function Surat({ data, lastTracked }) {
                             <p>Last Tracked : {lastTracked}</p>
                         </InnerContainer>
                         <SuratIcons_container>
-                            <SuratIcons><MailCheckmark onClick={null} color='#8fd357' /></SuratIcons>
-                            <SuratIcons><MailSettings color='#8fd357' /></SuratIcons>
+                            <SuratIcons><MailCheckmark color='#8fd357' /></SuratIcons>
+                            <SuratIcons><MailSettings onClick={
+                                () => showEditModal(surat, index)} /></SuratIcons>
                         </SuratIcons_container>
                     </StyledSurat >
                 )
             )}
+
+
         </>
     )
 }

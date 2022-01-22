@@ -6,11 +6,12 @@ import { FileExcel2 } from 'styled-icons/remix-fill';
 import { RefreshOutline } from 'styled-icons/typicons';
 import Surat from './Surat';
 import Scraped from './Scraped'
+import SearchBar from '../SearchBar';
 
 
 
 
-export default function Main({ data, addMailModal }) {
+export default function Main({ data, addMailModal, showEditModal, showSearch, showSearchBar, onSearchChange, searchGO }) {
     return (
         <StyledMain>
             <StyledMain_2>
@@ -18,11 +19,15 @@ export default function Main({ data, addMailModal }) {
                     <Main1_container>
                         <Main1_Menu>
                             <IconWrapper><MailAdd onClick={addMailModal} size='40px' /></IconWrapper>
-                            <IconWrapper> <SearchSettings size='40px' /></IconWrapper>
+                            <IconWrapper> <SearchSettings onClick={showSearch} size='40px' /></IconWrapper>
                             <IconWrapper> <FileExcel2 size='40px' /></IconWrapper>
                             <IconWrapper> <RefreshOutline size='40px' /></IconWrapper>
+                            {/* SET SHOHW SEARCH BAR */}
+                            {showSearchBar ? <SearchBar onSearchChange={onSearchChange} searchGO={searchGO} /> : null}
                         </Main1_Menu>
-                        <Surat data={data} />
+
+                        <Surat data={data} showEditModal={showEditModal} />
+
                     </Main1_container>
                 </Main1>
                 <Main2>

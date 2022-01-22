@@ -3,6 +3,11 @@ const app = express();
 const port = process.env.PORT || 3002
 
 
+// 012780028934921 <--- resi
+// parse json to objects
+app.use(express.json());
+
+
 //make sure express is imported before other packages
 const mongoose = require('mongoose')
 
@@ -10,16 +15,17 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 
 app.use(cors({
-    origin : "*"
+  origin: "*"
 }));
 
 //IMPORT ROUTES
-const users = require('./routers/users.js');
+const mails = require('./routers/mail.js');
+// const users = require('./routers/users.js');
 
 
 
 //!------------ROUTER
-app.use('/api/users', users);
+app.use('/api', mails);
 
 // -------------------------------USING MIDDLEWARE
 //to parse JSON file requested
@@ -29,6 +35,7 @@ app.use('/api/users', users);
 
 
 // usually app.use(auth) -- to verify user credential
+
 //another middleware
 app.get('/', function (req, res) {
   res.send('hello world')
@@ -36,10 +43,10 @@ app.get('/', function (req, res) {
 
 
 //connect to DB
-mongoose.connect('mongodb://localhost:27017/trackSurat', { useNewUrlParser: true, useUnifiedTopology: true  }, ()=> console.log('konek to debe!'));
+mongoose.connect('mongodb://localhost:27017/trackSurat', { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('konek to debe!'));
 
 //LISTEN TO SERVER
-app.listen(port, ()=> {
-    console.log('server is running on http://localhost:3002/, connected my nigga')
+app.listen(port, () => {
+  console.log('server is running on http://localhost:3002/, connected my nigga')
 })
 
