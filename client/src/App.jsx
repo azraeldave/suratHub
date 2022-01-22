@@ -27,6 +27,8 @@ export default function App() {
   const [notification, setNotification] = useState(true)
   const [notifMessage, setnotifMessage] = useState({ title: 'Caution!', message: 'yeah whatever dude!' })
 
+  // LOADING
+  const [loading, setLoading] = useState(true);
 
 
 
@@ -173,8 +175,30 @@ export default function App() {
         setFormInput({})
       })
   }
-
-
+  //  download XLSX
+  function downloadExcel() {
+    axios({
+      method: 'get',
+      url: `http://localhost:3002/api/mails/excel`,
+      responseType: 'blob',
+      headers: {
+        'Content-Disposition': "attachment;filename=report.xls",
+        'Content-Type': "application/octet-stream"
+      }
+    })
+      .then((res) => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'MailData.xlsx');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link)
+      })
+      .catch((error) => {
+        alert(error);
+      })
+  }
 
 
   // const submitFormInput = (event) => {
@@ -232,6 +256,8 @@ export default function App() {
         showEditModal={showEditModal}
         showSearch={() => { setshowSearchBar(!showSearchBar); console.log(showSearchBar) }}
         searchGO={null}
+        downloadExcel={downloadExcel}
+        refreshScrape={() => console.log('whatever dude')}
         showSearchBar={showSearchBar}
         onSearchChange={(e) => { setsearchState(e.target.value); console.log(searchState) }}
       />
@@ -273,7 +299,8 @@ export default function App() {
 
       {/* Notify each action */}
       {notification ? <Notification title={notifMessage.title} message={notifMessage.message} /> : null}
-
+      {/* spinner */}
+      {/* {loading ? <Spinner /> : null} */}
     </div>
 
 

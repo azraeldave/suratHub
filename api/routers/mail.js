@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const mongo = require('mongoose')
 //import model/schema
 const MailModel = require('../models/mail.js')
-
+const xlsx = require('xlsx')
 // import puppeteer
 const puppeteer = require('puppeteer')
 
@@ -38,6 +37,36 @@ router.get('/mails', (req, res) => {
         }
     })
 })
+// get all mails - xlsx
+router.get('/mails/excel', async (req, res) => {
+    try {
+        let allMails = await MailModel.find({}, (err, data) => {
+            if (err) {
+                res.json({ message: "Can't fetch data!", messagebody: "No Mails Found!" })
+            } else {
+                return data
+            }
+        }).clone().catch(function (err) { console.log(err) })
+
+        let stringify = JSON.stringify(allMails)
+        stringify = JSON.parse(stringify)
+        const newBook = xlsx.utils.book_new()
+        const newSheet = xlsx.utils.json_to_sheet(stringify)
+        const downloadXls = 'dataSurat.xlsx'
+        xlsx.utils.book_append_sheet(newBook, newSheet, 'Data Surat')
+        xlsx.writeFile(newBook, downloadXls)
+        res.set({
+            'content-type': 'application/octet-stream',
+            'content-disposition': 'attachment;filename=' + encodeURI(downloadXls)
+        })
+        res.download('./dataSurat.xlsx')
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+
+})
+
+
 
 // get mails with specified criteria
 router.get('/mails/search/:kek', async (req, res) => {

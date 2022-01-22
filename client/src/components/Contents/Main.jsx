@@ -11,7 +11,7 @@ import SearchBar from '../SearchBar';
 
 
 
-export default function Main({ data, addMailModal, showEditModal, showSearch, showSearchBar, onSearchChange, searchGO }) {
+export default function Main({ data, addMailModal, showEditModal, showSearch, showSearchBar, onSearchChange, searchGO, downloadExcel, refreshScrape }) {
     return (
         <StyledMain>
             <StyledMain_2>
@@ -20,8 +20,8 @@ export default function Main({ data, addMailModal, showEditModal, showSearch, sh
                         <Main1_Menu>
                             <IconWrapper><MailAdd onClick={addMailModal} size='40px' /></IconWrapper>
                             <IconWrapper> <SearchSettings onClick={showSearch} size='40px' /></IconWrapper>
-                            <IconWrapper> <FileExcel2 size='40px' /></IconWrapper>
-                            <IconWrapper> <RefreshOutline size='40px' /></IconWrapper>
+                            <IconWrapper> <FileExcel2 size='40px' onClick={downloadExcel} /></IconWrapper>
+                            <IconWrapper> <RefreshOutline size='40px' onClick={refreshScrape} /></IconWrapper>
                             {/* SET SHOHW SEARCH BAR */}
                             {showSearchBar ? <SearchBar onSearchChange={onSearchChange} searchGO={searchGO} /> : null}
                         </Main1_Menu>
