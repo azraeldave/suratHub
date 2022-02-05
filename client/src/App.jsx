@@ -120,7 +120,7 @@ export default function App() {
   }
 
   const editSubmit = () => {
-    axios.patch('http://localhost:3002/api/mails', formInput)
+    axios.patch(`http://localhost:3002/api/mails/${formInput.id}`, formInput)
       .then(res => console.log(res))
       .catch(err => console.log(err))
 
