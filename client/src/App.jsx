@@ -125,6 +125,8 @@ export default function App() {
       .catch(err => console.log(err))
 
 
+
+    // reactive update
     const editedMail = data.map((mail) => {
       // if it has same id
       if (mail.id == formInput.id) {
@@ -140,11 +142,8 @@ export default function App() {
       }
       return mail
     })
-
     setData(editedMail)
 
-    // re-render display of data
-    // setData(data.map((data) => data))
 
 
     //Close Modals and empty form input
@@ -175,6 +174,8 @@ export default function App() {
         setFormInput({})
       })
   }
+
+
   //  download XLSX
   function downloadExcel() {
     axios({
@@ -200,44 +201,6 @@ export default function App() {
       })
   }
 
-
-  // const submitFormInput = (event) => {
-  //   event.preventDefault();
-  //   axios.post('http://localhost:3002/api/mails', formInput)
-  //     .then((response) => {
-  //       setData([...data, formInput])
-
-  //       setFormInput({
-  //         nomor: '',
-  //         tujuan: '',
-  //         resi: '',
-  //         hal: '',
-  //         tanggal: '',
-  //         kurir: ''
-  //       })
-
-  //       setaddmailModal(false)
-
-  //     }).catch((err) => alert(err))
-  // }
-
-
-
-  // DATABASE
-
-  // Make a request for a user with a given ID
-  //useEffect so it will load everytime we land to the page
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:3002/api/mails')
-  //     .then(function (response) {
-  //       setData(response.data)
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     })
-  // }, [])
 
 
   // SHOW SEARCH
