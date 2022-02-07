@@ -130,7 +130,19 @@ router.post('/mails', async (req, res) => {
 })
 
 
-// PATCH
-router.patch('mails')
+// ! PATCH
+router.patch('/mails/:id', async(req, res) => {
+    try {
+        let id = req.params.id
+        let updates = req.body
+        // pass options so that the data(json) returned is the updated version
+        let opt = {new:true}
 
+        let updated = await MailModel.findByIdAndUpdate(id, updates, opt)
+        
+        res.status(201).json({message:'Success', messagebody:'data updated!', data : updated})
+    } catch (error) {
+        res.status(400).json({message:'failed to update data!', messagebody:'something went wrong ! :('})
+    }
+})
 module.exports = router;

@@ -4,11 +4,11 @@ const port = process.env.PORT || 3002
 
 
 // 012780028934921 <--- resi
+
 // parse json to objects
 app.use(express.json());
 
 
-//make sure express is imported before other packages
 const mongoose = require('mongoose')
 
 //use CORS to enable Headers Access
@@ -17,6 +17,7 @@ const cors = require('cors');
 app.use(cors({
   origin: "*"
 }));
+
 
 //IMPORT ROUTES
 const mails = require('./routers/mail.js');
@@ -34,8 +35,6 @@ app.use('/api', mails);
 // app.use(express.urlencoded({extended :true}));
 
 
-// usually app.use(auth) -- to verify user credential
-
 //another middleware
 app.get('/', function (req, res) {
   res.send('hello world')
@@ -43,7 +42,7 @@ app.get('/', function (req, res) {
 
 
 //connect to DB
-mongoose.connect('mongodb://localhost:27017/trackSurat', { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('konek to debe!'));
+mongoose.connect('mongodb://localhost:27017/trackSurat', { useNewUrlParser: true, useUnifiedTopology: true}, () => console.log('konek to debe!'));
 
 //LISTEN TO SERVER
 app.listen(port, () => {
