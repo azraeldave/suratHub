@@ -1,2 +1,4 @@
 # suratHub
-my first project, a management app that scrapes mail tracking from several delivery tracking sites ( MERN Stack + Puppeteer.js)
+
+> - manage mailing deliveries
+> - scrapes mail tracking history from various tracking sites (last tracked + webview.png)
